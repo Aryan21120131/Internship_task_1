@@ -59,7 +59,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.holder> {
         else{
             holder.log.setImageResource(R.drawable.online);
         }
-        Picasso.with(this)
+        Picasso.with(context)
                 .load("https://imgur.com/0smMgMH.png")
                 .into(holder.img);
 

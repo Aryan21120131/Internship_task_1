@@ -16,6 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.POST;
 
 public class Home extends AppCompatActivity {
@@ -43,15 +44,15 @@ public class Home extends AppCompatActivity {
 
         JSONPlaceholder jsonPlaceholder=retrofit.create(JSONPlaceholder.class);
         Call<List<Post>> call=jsonPlaceholder.getPost();
-        call.enqueue(new Callback<List<POST>>() {
+        call.enqueue(new Callback<List<Post>>() {
             @Override
-            public void onResponse(Call<List<POST>> call, Response<List<POST>> response) {
-                List<POST> postList=response.body();
+            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+                List<Post> postList=response.body();
                 Adapter adapter=new Adapter(getApplicationContext(),name,agency,wikipedia,img,status,postList);
                 recyclerView.setAdapter(adapter);
             }
             @Override
-            public void onFailure(Call<List<POST>> call, Throwable t) {
+            public void onFailure(Call<List<Post>> call, Throwable t) {
             }
         });
     }
