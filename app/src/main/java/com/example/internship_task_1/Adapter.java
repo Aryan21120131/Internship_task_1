@@ -18,22 +18,12 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.holder> {
 
-    String[] name;
-    String[] agency;
-    String[] wikipedia;
-    boolean[] status;
-    int[] image;
     Context context;
     List<Post> postList;
 
 
-    public Adapter(Context context,String[] name, String[] agency, String[] wikipedia, int[] image, boolean[] status, List<Post> postList)
+    public Adapter(Context context,List<Post> postList)
     {
-        this.name=name;
-        this.image=image;
-        this.agency=agency;
-        this.wikipedia=wikipedia;
-        this.status=status;
         this.postList=postList;
         this.context=context;
     }
@@ -60,24 +50,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.holder> {
             holder.log.setImageResource(R.drawable.online);
         }
         Picasso.with(context)
-                .load("https://imgur.com/0smMgMH.png")
+                .load(post.getImage())
                 .into(holder.img);
-
-//        holder.name.setText(name[position]);
-//        holder.img.setImageResource(image[position]);
-//        holder.agen.setText(agency[position]);
-//        holder.wiki.setText(wikipedia[position]);
-//        if(status[position]) {
-//            holder.log.setImageResource(R.drawable.offline);
-//        }else {
-//            holder.log.setImageResource(R.drawable.online);
-//        }
 
     }
 
     @Override
     public int getItemCount() {
-        return name.length;
+        return postList.size();
     }
 
     class holder extends RecyclerView.ViewHolder{

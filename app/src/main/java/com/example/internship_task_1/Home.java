@@ -48,7 +48,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 List<Post> postList=response.body();
-                Adapter adapter=new Adapter(getApplicationContext(),name,agency,wikipedia,img,status,postList);
+                Adapter adapter=new Adapter(getApplicationContext(),postList);
                 recyclerView.setAdapter(adapter);
             }
             @Override
